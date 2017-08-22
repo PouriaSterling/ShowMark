@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-
+# TMDB API wrapper
+gem 'themoviedb-api'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,3 +46,69 @@ group :development do
   gem 'spring'
 end
 
+
+#################################
+####### APP SPECIFIC GEMS #######
+#################################
+group :production do
+  gem 'pg'  # for Heroku deployment
+  gem 'rails_12factor'
+end
+
+group :development, :test do
+  # Unit testing framework
+  gem 'rspec-rails'
+  gem 'autotest'
+
+  # Clean up the database throughout the testing suite
+  gem 'database_cleaner'
+
+  # Acceptance test framework for web applications http://teamcapybara.github.io/capybara/
+  gem 'capybara'
+
+  # A helper for launching cross-platform applications in a fire and forget manner.
+  gem 'launchy'
+  # Testing suite generators
+  gem 'ZenTest'
+end
+
+group :development, :test do
+end
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'simplecov', :require => false
+end
+
+group :development do
+  # Run Rspec when files have changed
+  gem 'guard-rspec', require: false
+  # Run Cucumber when files have changed
+  gem 'guard-cucumber', require: false
+  # This gem implements the rspec command for Spring
+  gem 'spring-commands-rspec'
+  # Automatically bundle when the Gemfile has been changed 
+  gem 'guard-bundler', require: false
+  # Static analysis 
+  gem 'rubocop', require: false
+  # hide asset log messages in development
+  gem 'quiet_assets'
+end
+
+# Html templating markup language
+gem 'haml-rails', '~> 0.9'
+
+# Allows for safe use of and and
+gem 'andand', '~> 1.3', '>= 1.3.3'
+
+# Enables pretty console (ap)
+gem 'awesome_print', '~> 1.6', '>= 1.6.1', require:'ap'
+
+gem "factory_girl_rails", "~> 4.0"
+
+
+# Third party authentication using facebook
+gem 'omniauth-facebook'
+# Third party authentication using twitter
+gem 'omniauth-twitter'
