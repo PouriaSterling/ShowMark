@@ -16,6 +16,26 @@ class ShowsController < ApplicationController
   def new
     @show = Show.new
   end
+  
+  # def search_tmdb
+  #   res = Tmdb::Search.tv(params[:search_terms])
+    
+  #   # no results
+  #   if res.total_results == 0
+  #     flash[:warning] = 'Show not found'
+  #     redirect_to new_show_path
+  #   else
+  #     # @show = Show.new(name: res.results[0].name)
+  #     # if @show.save
+  #     #   format.html { redirect_to @show, notice: 'Show was successfully created.' }
+  #     #   format.json { render :show, status: :created, location: @show }
+  #     # else
+  #     #   format.html { render :new }
+  #     #   format.json { render json: @show.errors, status: :unprocessable_entity }
+  #     # end
+  #     redirect_to create
+  #   end
+  # end
 
   # GET /shows/1/edit
   def edit
@@ -25,15 +45,23 @@ class ShowsController < ApplicationController
   # POST /shows.json
   def create
     @show = Show.new(show_params)
-
-    respond_to do |format|
-      if @show.save
-        format.html { redirect_to @show, notice: 'Show was successfully created.' }
-        format.json { render :show, status: :created, location: @show }
-      else
-        format.html { render :new }
-        format.json { render json: @show.errors, status: :unprocessable_entity }
-      end
+    # byebug
+    res = Tmdb::Search.tv(@show.name)
+    # no results
+    if res.total_results == 0
+      flash[:warning] = 'Show not found'
+      render 'new' and return
+    end
+    # set show name from TMDb result
+    @show.name = res.results[0].name
+    byebug
+    
+    if @show.save
+      flash[:notice] = 'Show successfully created'
+      redirect_to shows_path and return
+    else
+      flash[:warning] = 'Show not found'
+      render 'new' 
     end
   end
 
