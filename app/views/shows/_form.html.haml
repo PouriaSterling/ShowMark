@@ -1,7 +1,7 @@
 = form_for @show do |f|
   - if @show.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@show.errors.count, "error")} prohibited this show from being saved:"
+    #warning
+      #{pluralize(@show.errors.count, "error")} prohibited this show from being saved:
       %ul
         - @show.errors.full_messages.each do |msg|
           %li= msg
