@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# use bootstrap for a responsive app
+gem 'bootstrap-sass'
 # TMDB API wrapper
 gem 'themoviedb-api'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

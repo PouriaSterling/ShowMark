@@ -1,0 +1,15 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background-color: grey;
+}
+
+#notice {
+  color: green;
+}
+
+#warning {
+  color: red;
+}
+
