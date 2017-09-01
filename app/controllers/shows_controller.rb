@@ -1,40 +1,22 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
 
-  # GET /shows
-  # GET /shows.json
   def index
     @shows = Show.all
   end
 
-  # GET /shows/1
-  # GET /shows/1.json
   def show
   end
 
-  # GET /shows/new
   def new
     @show = Show.new
   end
 
-  # GET /shows/1/edit
   def edit
   end
 
-  # POST /shows
-  # POST /shows.json
   def create
     @show = Show.new(show_params)
-    # byebug
-    # res = Tmdb::Search.tv(@show.name)
-    # # no results
-    # if res.total_results == 0
-    #   flash[:warning] = 'Show not found'
-    #   render 'new' and return
-    # end
-    # # set show name from TMDb result
-    # @show.name = res.results[0].name
-    # byebug
     
     if @show.save
       flash[:notice] = 'Show successfully created'
@@ -44,8 +26,6 @@ class ShowsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shows/1
-  # PATCH/PUT /shows/1.json
   def update
     respond_to do |format|
       if @show.update(show_params)
@@ -58,8 +38,6 @@ class ShowsController < ApplicationController
     end
   end
 
-  # DELETE /shows/1
-  # DELETE /shows/1.json
   def destroy
     @show.destroy
     respond_to do |format|
