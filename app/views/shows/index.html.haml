@@ -1,14 +1,12 @@
-%h1 All Your Shows
-
 %div.container-fluid
   - config = Tmdb::Configuration.get
   - base_url = config.images.base_url
-  - poster_size = config.images.logo_sizes[3]
+  - poster_size = config.images.logo_sizes[4]
   %div.row
     - @shows.each do |show|
-      %div.col-md-3
-        - byebug
-        // = image_tag base_url + poster_size + show.image
+      %div.col-md-4
+        // - byebug
+        = image_tag base_url + poster_size + show.image
 
 
 %table

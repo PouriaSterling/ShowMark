@@ -24,12 +24,13 @@ class Show < ActiveRecord::Base
     
     def valid_episode
         if @@res.total_results != 0 and errors.size == 0
-            if episode < 0 or episode > @@show.seasons[season].episode_count
-                errors.add(:episode, "out of bounds. There's only #{@@show.seasons[season].episode_count} 
-                #{"episode".pluralize(@@show.seasons[season].episode_count)}")
+            if episode < 0 or episode > @@show.seasons[season - 1].episode_count
+                errors.add(:episode, "out of bounds. There's only #{@@show.seasons[season-1].episode_count} 
+                #{"episode".pluralize(@@show.seasons[season - 1].episode_count)}")
             end
             # set the poster image path since there are no validation errors
-            self.image = @@res.results[0].poster_path
+            # self.image = @@res.results[0].poster_path
+            self.image = @@show.seasons[season - 1].poster_path
         end
     end
 end
