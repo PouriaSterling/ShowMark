@@ -1,0 +1,23 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background-color: #242424;
+}
+
+.center {
+  display: block;
+  margin: auto;
+}
+
+.home-page-tiles {
+  height: 308px;
+}
+
+#notice {
+  color: green;
+}
+
+#warning {
+  color: red;
+}

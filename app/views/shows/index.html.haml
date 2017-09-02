@@ -1,4 +1,19 @@
-%h1 Listing shows
+%h1 
+  SHOWMARK
+  %br
+  %small BOOKMARK YOUR SHOWS
+
+%div.container-fluid.center
+  - config = Tmdb::Configuration.get
+  - base_url = config.images.base_url
+  - poster_size = config.images.poster_sizes[2]
+  - xs_poster_size = config.images.poster_sizes[1]
+  %div.row
+    - @shows.each do |show|
+      %div.col-lg-2.col-md-3.col-sm-4.col-xs-6.home-page-tiles
+        = image_tag base_url + poster_size + show.image, class: "img-fluid center visible-md visible-sm visible-lg"
+        = image_tag base_url + xs_poster_size + show.image, class: "img-fluid center visible-xs"
+
 
 %table
   %thead
