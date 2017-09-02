@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :show do
-    name "MyString"
+    name "Game of Thrones"
     season 1
     episode 1
+    image "/exampleImage.jpg"
   end
 end
