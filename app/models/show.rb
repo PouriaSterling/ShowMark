@@ -1,6 +1,16 @@
 class Show < ActiveRecord::Base
-    validate :show_must_exist, :valid_season, :valid_episode
+    validate :show_must_exist, :valid_season, :valid_episode, if: :allow_validation
     
+    # only do further validations if all fields are not empty
+    def allow_validation
+        if !name.blank? and !season.blank? and !episode.blank?
+            return true
+        end
+        if errors[:base].blank?
+            errors[:base] << "Please complete all fields"
+        end
+        return false
+    end
     
     def show_must_exist
         @@res = Tmdb::Search.tv(name)
@@ -35,8 +45,12 @@ class Show < ActiveRecord::Base
                 #{"episode".pluralize(episode_count)}")
             end
             # set the poster image path since there are no validation errors
-            # self.image = @@res.results[0].poster_path
-            self.image = @@show.seasons[season - offset].poster_path
+            # use the generic poster path if season poster doesnt exist
+            if @@show.seasons[season - offset].poster_path.blank?
+                self.image = @@show.poster_path
+            else
+                self.image = @@show.seasons[season - offset].poster_path
+            end
         end
     end
 end
