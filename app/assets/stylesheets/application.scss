@@ -5,6 +5,15 @@ body {
   background-color: #242424;
 }
 
+.center {
+  display: block;
+  margin: auto;
+}
+
+.home-page-tiles {
+  height: 308px;
+}
+
 #notice {
   color: green;
 }
@@ -12,4 +21,3 @@ body {
 #warning {
   color: red;
 }
-
