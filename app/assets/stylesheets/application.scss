@@ -10,10 +10,15 @@ body {
 .center {
   display: block;
   margin: auto;
+  text-align: center;
 }
 
 .home-page-tiles {
   height: 308px;
+}
+
+.choice-tiles {
+  height: 300px;
 }
 
 .notice {
