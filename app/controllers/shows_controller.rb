@@ -1,5 +1,6 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :js
 
   def index
     @shows = Show.all
@@ -10,6 +11,11 @@ class ShowsController < ApplicationController
 
   def new
     @show = Show.new
+  end
+  
+  def search_tmdb
+    @test = "Please work"
+    # byebug
   end
 
   def edit

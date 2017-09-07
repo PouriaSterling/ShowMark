@@ -1,6 +1,14 @@
 %h1 New show
 
-// = render 'tmdbForm'
-= render 'form'
+= render 'tmdbForm'
+// = render 'form' if request.xhr?
+// = link_to 'NEW', shows_search_tmdb_path, remote: true
+#selection-shows{style: "display:none;"}
+
+
+// .test
+//     %a{"data-background-color" => "#990000", :href => "#"} Paint it red
+//     %a{"data-background-color" => "#009900", "data-text-color" => "#FFFFFF", :href => "#"} Paint it green
+//     %a{"data-background-color" => "#000099", "data-text-color" => "#FFFFFF", :href => "#"} Paint it blue
 
 = link_to 'Back', shows_path
