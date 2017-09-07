@@ -1,3 +1,16 @@
-- byebug
-$('#selection-shows').html("<%= j (render 'form') %>");
-$('#selection-shows').slideDown(350);
+// - byebug
+- if @search == 0
+    $('#errors').text('FILL THE FIELD')
+    $('#errors').show();
+- else
+    - if @search.total_results == 0
+        // show doesnt exist
+        // - flash[:warning] = '#{@name} could not be found in TMDb'
+        $('#errors').text('#{@name} could not be found in TMDb')
+        $('#errors').show();
+        $('#selection-shows').hide();
+    - else
+        // show exists
+        $('#errors').hide();
+        $('#selection-shows').html('#{escape_javascript(render :partial => "selections")}');
+        $('#selection-shows').slideDown(350);

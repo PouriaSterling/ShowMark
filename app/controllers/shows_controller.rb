@@ -14,7 +14,14 @@ class ShowsController < ApplicationController
   end
   
   def search_tmdb
-    @test = "Please work"
+    @name = params[:search_terms]
+    @search = 0
+    if !@name.blank?
+      @search = Tmdb::Search.tv(@name)
+    end
+    @config = Tmdb::Configuration.get
+    @base_url = @config.images.base_url
+    @poster_size = @config.images.poster_sizes[1]
     # byebug
   end
 

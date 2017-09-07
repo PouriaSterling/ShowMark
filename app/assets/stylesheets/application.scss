@@ -16,10 +16,14 @@ body {
   height: 308px;
 }
 
-#notice {
+.notice {
   color: green;
 }
 
-#warning {
+.warning {
   color: red;
 }
+
+// .hidden {
+//   display: none;
+// }
