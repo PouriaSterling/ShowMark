@@ -3,10 +3,11 @@ Select show:
 .row
     - @search.results.each_with_index do |show, i|
         - break if i == 3
-        = link_to "search_id/#{show.id}", controller: "shows", remote: true do
+        = link_to "search_id/#{show.id}", controller: "shows", class: "btn", remote: true do
             .col-lg-2.col-md-3.col-sm-4.col-xs-6.choice-tiles{id: "show-#{i}-#{show.id}"}
-                .center.col-1
-                    %h4 #{show.name}
-                .center.col-1
+                .center
+                    %h5 
+                        %strong #{show.name}
+                .center
                     - if !show.poster_path.blank?
                         = image_tag @base_url + @poster_size + show.poster_path, class: "img-fluid center"

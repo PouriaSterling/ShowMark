@@ -21,7 +21,7 @@ class ShowsController < ApplicationController
     end
     @config = Tmdb::Configuration.get
     @base_url = @config.images.base_url
-    @poster_size = @config.images.poster_sizes[1]
+    @poster_size = @config.images.poster_sizes[0]
     # byebug
   end
   
@@ -30,6 +30,29 @@ class ShowsController < ApplicationController
     @id = params[:id]
     @show = Tmdb::TV.detail(@id)
     @seasons = @show.number_of_seasons
+    @offset = 0
+    # skip season 0 (special episodes) if it exists
+    if @show.seasons[0].season_number == 0
+      @offset = 1
+    end
+  end
+  
+  def get_ep
+    @id = params[:id]
+    @season = params[:season]
+    @episodes = params[:ep]
+  end
+  
+  def get_ep_info
+    @id = params[:id]
+    @season = params[:season]
+    @ep = params[:ep]
+    @episode = Tmdb::Tv::Episode.detail(@id, @season, @ep)
+    @stills = Tmdb::Tv::Episode.posters(@id, @season, @ep)
+    
+    @config = Tmdb::Configuration.get
+    @base_url = @config.images.base_url
+    @still_size = @config.images.still_sizes[2]
   end
 
   def edit

@@ -3,17 +3,17 @@
   %br
   // %small BOOKMARK YOUR SHOWS
 
-.container-fluid.center
+.container-fluid
   - config = Tmdb::Configuration.get
   - base_url = config.images.base_url
   - poster_size = config.images.poster_sizes[2]
   - xs_poster_size = config.images.poster_sizes[1]
   .row
     - @shows.each do |show|
-      .col-lg-2.col-md-3.col-sm-4.col-xs-6.home-page-tiles
-        = link_to (image_tag base_url + poster_size + show.image, class: "img-fluid center visible-md visible-sm visible-lg"), show, id: "#{show.name} button"
+      .btn
+        = link_to (image_tag base_url + poster_size + show.image, class: "visible-md visible-sm visible-lg"), show, id: "#{show.name} button"
         
-        = link_to (image_tag base_url + xs_poster_size + show.image, class: "img-fluid center visible-xs"), show, id: "#{show.name} button -xs"
+        = link_to (image_tag base_url + xs_poster_size + show.image, class: "visible-xs"), show, id: "#{show.name} button -xs"
 
 
 %table
