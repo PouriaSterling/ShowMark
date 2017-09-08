@@ -1,0 +1,8 @@
+// alert('lol')
+// - byebug
+$('#selection-seasons-heading').text('Select Season');
+$('#selection-seasons-heading').show();
+
+$('#selection-seasons').hide();
+$('#selection-seasons').html('#{escape_javascript(render :partial => "selectSeason")}');
+$('#selection-seasons').slideDown(350);

@@ -1,4 +1,6 @@
 // - byebug
+$('#selection-seasons-heading').hide();
+$('#selection-seasons').hide();
 - if @search == 0
     $('#errors').text('FILL THE FIELD')
     $('#errors').show();
@@ -12,5 +14,5 @@
     - else
         // show exists
         $('#errors').hide();
-        $('#selection-shows').html('#{escape_javascript(render :partial => "selections")}');
+        $('#selection-shows').html('#{escape_javascript(render :partial => "selectShow")}');
         $('#selection-shows').slideDown(350);

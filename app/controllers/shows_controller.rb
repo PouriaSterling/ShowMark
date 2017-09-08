@@ -24,6 +24,13 @@ class ShowsController < ApplicationController
     @poster_size = @config.images.poster_sizes[1]
     # byebug
   end
+  
+  def search_id
+    # byebug
+    @id = params[:id]
+    @show = Tmdb::TV.detail(@id)
+    @seasons = @show.number_of_seasons
+  end
 
   def edit
   end
