@@ -22,11 +22,9 @@ class ShowsController < ApplicationController
     @config = Tmdb::Configuration.get
     @base_url = @config.images.base_url
     @poster_size = @config.images.poster_sizes[0]
-    # byebug
   end
   
   def search_id
-    # byebug
     @id = params[:id]
     @show = Tmdb::TV.detail(@id)
     @seasons = @show.number_of_seasons
@@ -38,12 +36,14 @@ class ShowsController < ApplicationController
   end
   
   def get_ep
+    @name = params[:name]
     @id = params[:id]
     @season = params[:season]
     @episodes = params[:ep]
   end
   
   def get_ep_info
+    @name = params[:name]
     @id = params[:id]
     @season = params[:season]
     @ep = params[:ep]
@@ -53,6 +53,8 @@ class ShowsController < ApplicationController
     @config = Tmdb::Configuration.get
     @base_url = @config.images.base_url
     @still_size = @config.images.still_sizes[2]
+    
+    @show = Show.new(name: @name, season: @season, episode: @ep)
   end
 
   def edit
@@ -60,11 +62,11 @@ class ShowsController < ApplicationController
 
   def create
     @show = Show.new(show_params)
-    
     if @show.save
       flash[:notice] = 'Show successfully created'
       redirect_to shows_path and return
     else
+      flash[:warning] = 'Failed to add show'
       render 'new' 
     end
   end
@@ -97,6 +99,16 @@ class ShowsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
+      if params[:show].blank?
+        raw_parameters = {
+          show: {
+            name: params[:name],
+            season: params[:season],
+            episode: params[:episode]
+          }
+        }
+        params = ActionController::Parameters.new(raw_parameters)
+      end
       params.require(:show).permit(:name, :season, :episode)
     end
 end

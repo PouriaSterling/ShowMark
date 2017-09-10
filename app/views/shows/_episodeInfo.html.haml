@@ -9,3 +9,8 @@
                     - break if i == 3
                     - if !still.file_path.blank?
                         = image_tag @base_url + @still_size + still.file_path, class: "img-fluid center"
+
+// = link_to 'Submit', '/shows', {name: @name, season: @season, episode: @ep, method: :post, class: "btn btn-success"}
+
+
+= button_to "Save", '/shows', params: {name: @name, season: @season, episode: @ep}, class: "btn btn-success"

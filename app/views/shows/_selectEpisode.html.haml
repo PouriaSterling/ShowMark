@@ -1,4 +1,4 @@
 .row
     - (1..@episodes.to_i).step(1) do |i|
-        = link_to "get_ep_info/#{@id}/#{@season}/#{i}", controller: "shows", class: "btn btn-info", id: "episode-#{i}", remote: true do
+        = link_to "get_ep_info/#{@name}/#{@id}/#{@season}/#{i}", controller: "shows", class: "btn btn-info", id: "episode-#{i}", remote: true do
             Episode #{i}
