@@ -12,6 +12,6 @@
 
 = link_to 'Edit', edit_show_path(@show)
 \|
-= link_to 'Destroy', show, :method => :delete, :data => { :confirm => 'Are you sure?' }
+= link_to 'Destroy', @show, :method => :delete, :data => { :confirm => 'Are you sure?' }
 \|
 = link_to 'Back', shows_path
