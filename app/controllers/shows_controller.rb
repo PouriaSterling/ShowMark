@@ -36,19 +36,19 @@ class ShowsController < ApplicationController
   end
   
   def get_ep
-    @name = params[:name]
     @id = params[:id]
     @season = params[:season]
     @episodes = params[:ep]
   end
   
   def get_ep_info
-    @name = params[:name]
     @id = params[:id]
     @season = params[:season]
     @ep = params[:ep]
     @episode = Tmdb::Tv::Episode.detail(@id, @season, @ep)
     @stills = Tmdb::Tv::Episode.posters(@id, @season, @ep)
+    @details = Tmdb::TV.detail(@id)
+    @name = @details.name
     
     @config = Tmdb::Configuration.get
     @base_url = @config.images.base_url
