@@ -1,41 +1,17 @@
 %h1 
   SHOWMARK
   %br
-  // %small BOOKMARK YOUR SHOWS
 
-%div.container-fluid.center
+= link_to 'Add a Show!', new_show_path, class: "btn btn-info"
+
+.container-fluid
   - config = Tmdb::Configuration.get
   - base_url = config.images.base_url
   - poster_size = config.images.poster_sizes[2]
   - xs_poster_size = config.images.poster_sizes[1]
-  %div.row
+  .row
     - @shows.each do |show|
-      %div.col-lg-2.col-md-3.col-sm-4.col-xs-6.home-page-tiles
-        = link_to (image_tag base_url + poster_size + show.image, class: "img-fluid center visible-md visible-sm visible-lg"), show, id: "#{show.name} button"
+      .btn
+        = link_to (image_tag base_url + poster_size + show.image, class: "visible-md visible-sm visible-lg"), show, id: "#{show.name} button"
         
-        = link_to (image_tag base_url + xs_poster_size + show.image, class: "img-fluid center visible-xs"), show, id: "#{show.name} button -xs"
-
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Season
-      %th Episode
-      %th
-      %th
-      %th
-
-  %tbody
-    - @shows.each do |show|
-      %tr
-        %td= show.name
-        %td= show.season
-        %td= show.episode
-        %td= link_to 'Show', show
-        %td= link_to 'Edit', edit_show_path(show)
-        %td= link_to 'Destroy', show, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Show', new_show_path
+        = link_to (image_tag base_url + xs_poster_size + show.image, class: "visible-xs"), show, id: "#{show.name} button -xs"

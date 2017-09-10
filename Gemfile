@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'responders'
 # use bootstrap for a responsive app
 gem 'bootstrap-sass'
 # TMDB API wrapper

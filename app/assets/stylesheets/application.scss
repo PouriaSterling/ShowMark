@@ -10,16 +10,33 @@ body {
 .center {
   display: block;
   margin: auto;
+  text-align: center;
 }
 
 .home-page-tiles {
   height: 308px;
 }
 
-#notice {
+.choice-tiles {
+  height: 170px;
+}
+
+.notice {
   color: green;
 }
 
-#warning {
+.warning {
   color: red;
 }
+
+.btn {
+  margin: 8px;
+}
+
+.indented {
+  margin-left: 20px;
+}
+
+// .hidden {
+//   display: none;
+// }

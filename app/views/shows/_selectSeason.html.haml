@@ -1,0 +1,4 @@
+.row
+    - (1..@seasons).step(1) do |i|
+        = link_to "get_ep/#{@show.id}/#{i}/#{@show.seasons[i-1+@offset].episode_count}", controller: "shows", class: "btn btn-info", id: "season-#{i}", remote: true do
+            Season #{i}

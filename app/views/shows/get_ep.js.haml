@@ -1,0 +1,9 @@
+$('#episode-info-heading').hide();
+$('#episode-info').hide();
+
+$('#selection-episodes-heading').text('Select Episode');
+$('#selection-episodes-heading').show();
+
+$('#selection-episodes').hide();
+$('#selection-episodes').html('#{escape_javascript(render :partial => "selectEpisode")}');
+$('#selection-episodes').slideDown(350);

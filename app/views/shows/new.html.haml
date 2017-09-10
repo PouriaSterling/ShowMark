@@ -1,6 +1,20 @@
 %h1 New show
+%p.warning#errors{style:"display: none;"}
 
-// = render 'tmdbForm'
-= render 'form'
+= render 'tmdbForm'
+.indented
+    #selection-shows{style:"display: none;"}
+    %h5#selection-seasons-heading{style:"display: none;"}
+    #selection-seasons{style:"display: none;"}
+    %h5#selection-episodes-heading{style:"display: none;"}
+    #selection-episodes{style:"display: none;"}
+    %h5#episode-info-heading{style:"display: none;"}
+    #episode-info{style:"display: none;"}
+
+
+// .test
+//     %a{"data-background-color" => "#990000", :href => "#"} Paint it red
+//     %a{"data-background-color" => "#009900", "data-text-color" => "#FFFFFF", :href => "#"} Paint it green
+//     %a{"data-background-color" => "#000099", "data-text-color" => "#FFFFFF", :href => "#"} Paint it blue
 
 = link_to 'Back', shows_path

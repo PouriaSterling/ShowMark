@@ -1,0 +1,21 @@
+%ul.list-group
+    %li.list-group-item.list-group-item-info
+        %strong #{@episode.name}
+    %li.list-group-item.list-group-item-info #{@episode.overview}
+    %li.list-group-item.list-group-item-info
+        .row
+            - @stills.each_with_index do |still, i|
+                .btn
+                    - break if i == 3
+                    - if !still.file_path.blank?
+                        = image_tag @base_url + @still_size + still.file_path, class: "img-fluid center"
+
+%br
+Confirm your selections
+%ul.list-group
+    %li.list-group-item.list-group-item-info
+        %strong #{@name}
+    %li.list-group-item.list-group-item-info Season: #{@season}
+    %li.list-group-item.list-group-item-info Episode: #{@ep}
+
+= button_to "Save", '/shows', params: {name: @name, season: @season, episode: @ep}, class: "btn btn-success"

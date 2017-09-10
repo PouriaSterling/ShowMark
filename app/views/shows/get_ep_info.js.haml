@@ -1,0 +1,6 @@
+$('#episode-info-heading').text('Episode Information');
+$('#episode-info-heading').show();
+
+$('#episode-info').hide();
+$('#episode-info').html('#{escape_javascript(render :partial => "episodeInfo")}');
+$('#episode-info').slideDown(350);
