@@ -33,6 +33,11 @@ class ShowsController < ApplicationController
     if @show.seasons[0].season_number == 0
       @offset = 1
     end
+    @show.seasons.reverse_each do |season|
+      if !Date.parse(season.air_date).past?
+        @seasons -= 1
+      end
+    end
   end
   
   def get_ep
