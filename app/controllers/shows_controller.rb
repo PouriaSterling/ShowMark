@@ -3,7 +3,11 @@ class ShowsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @shows = Show.all
+    @shows = Show.where(user_id: @current_user.id)
+    @config = Tmdb::Configuration.get
+    @base_url = @config.images.secure_base_url
+    @poster_size = @config.images.poster_sizes[2]
+    @xs_poster_size = @config.images.poster_sizes[1]
   end
 
   def show
@@ -20,7 +24,7 @@ class ShowsController < ApplicationController
       @search = Tmdb::Search.tv(@name)
     end
     @config = Tmdb::Configuration.get
-    @base_url = @config.images.base_url
+    @base_url = @config.images.secure_base_url
     @poster_size = @config.images.poster_sizes[0]
   end
   
@@ -56,7 +60,7 @@ class ShowsController < ApplicationController
     @name = @details.name
     
     @config = Tmdb::Configuration.get
-    @base_url = @config.images.base_url
+    @base_url = @config.images.secure_base_url
     @still_size = @config.images.still_sizes[2]
     
     @show = Show.new(name: @name, season: @season, episode: @ep)
@@ -66,7 +70,9 @@ class ShowsController < ApplicationController
   end
 
   def create
-    @show = Show.new(show_params)
+    @show = @current_user.shows.new(show_params)
+    @show.addExtraInformation
+    # @show = Show.new(show_params)
     if @show.save
       flash[:notice] = 'Show successfully created'
       redirect_to shows_path and return
@@ -99,21 +105,36 @@ class ShowsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_show
-      @show = Show.find(params[:id])
+      @show = Show.where(id: params[:id]).first
+      
+      # redirect if show doesnt exist
+      if @show.blank?
+        flash[:warning] = "Show doesn't exist"
+        redirect_to shows_path and return
+      end
+      
+      # check authorisation to look at this show
+      if @show.user_id != @current_user.id
+        flash[:warning] = 'Not authorised to view this page'
+        @show = nil
+        redirect_to shows_path and return
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
+      byebug
       if params[:show].blank?
         raw_parameters = {
           show: {
             name: params[:name],
             season: params[:season],
-            episode: params[:episode]
+            episode: params[:episode],
+            show_id: params[:show_id]
           }
         }
         params = ActionController::Parameters.new(raw_parameters)
       end
-      params.require(:show).permit(:name, :season, :episode)
+      params.require(:show).permit(:name, :season, :episode, :show_id)
     end
 end

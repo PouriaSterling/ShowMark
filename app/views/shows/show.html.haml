@@ -1,17 +1,18 @@
-%p#notice= notice
+%h3 #{@show.name}
 
-%p
-  %b Name:
-  = @show.name
 %p
   %b Season:
   = @show.season
 %p
   %b Episode:
   = @show.episode
+// = link_to 'Edit', edit_show_path(@show)
+// \|
+= link_to 'Delete', @show, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"
+%br
+= link_to 'Back', shows_path, class: "btn btn-info"
 
-= link_to 'Edit', edit_show_path(@show)
-\|
-= link_to 'Destroy', @show, :method => :delete, :data => { :confirm => 'Are you sure?' }
-\|
-= link_to 'Back', shows_path
+%br
+%br
+%br
+%h4.notice ===> MAJOR UPGRADES TO THIS PAGE COMING SOON!

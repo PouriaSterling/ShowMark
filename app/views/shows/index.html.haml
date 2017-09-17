@@ -2,16 +2,21 @@
   SHOWMARK
   %br
 
-= link_to 'Add a Show!', new_show_path, class: "btn btn-info"
-
-.container-fluid
-  - config = Tmdb::Configuration.get
-  - base_url = config.images.base_url
-  - poster_size = config.images.poster_sizes[2]
-  - xs_poster_size = config.images.poster_sizes[1]
-  .row
-    - @shows.each do |show|
-      .btn
-        = link_to (image_tag base_url + poster_size + show.image, class: "visible-md visible-sm visible-lg"), show, id: "#{show.name} button"
-        
-        = link_to (image_tag base_url + xs_poster_size + show.image, class: "visible-xs"), show, id: "#{show.name} button -xs"
+.homepage
+  .nav.navbar.navbar-inverse
+    .container-fluid
+      %ul.nav.navbar-nav
+        %li= link_to 'NEW SHOW', new_show_path
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to logout_path,:method => :post do
+            %span.glyphicon.glyphicon-option-vertical
+        // %li= link_to "#{@current_user.name}", root_path
+        // %li= link_to 'Log Out', logout_path, :method => :post
+  
+  .container-fluid.text-center
+    .row
+      - @shows.each do |show|
+        .btn.text-center
+          = link_to (image_tag @base_url + @poster_size + show.image, class: "visible-md visible-sm visible-lg", style: "width:100%;"), show, id: "#{show.name} button"
+          = link_to (image_tag @base_url + @xs_poster_size + show.image, class: "visible-xs", style: "width:100%;"), show, id: "#{show.name} button -xs"
