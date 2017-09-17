@@ -123,7 +123,6 @@ class ShowsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
-      byebug
       if params[:show].blank?
         raw_parameters = {
           show: {
