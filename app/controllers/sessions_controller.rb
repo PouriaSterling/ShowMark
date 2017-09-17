@@ -14,4 +14,9 @@ class SessionsController < ApplicationController
         flash[:notice] = 'Logged out successfully.'
         redirect_to shows_path
     end
+    
+    def failure
+        flash[:warning] = "Sorry, couldn't authenticate with Facebook"
+        redirect_to root_path
+    end
 end

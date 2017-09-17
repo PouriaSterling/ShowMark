@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    provider "MyString"
-    uid "MyString"
+    name "Pouria"
+    provider "facebook"
+    uid "1234"
   end
 end
