@@ -2,7 +2,9 @@
     %li.list-group-item.list-group-item-info
         %strong #{@episode.name}
         -if !Date.parse(@episode.air_date).past?
-            %i.warning (releases #{Date.parse(@episode.air_date).strftime("%d-%m-%Y")})
+            %i.warning (airs #{Date.parse(@episode.air_date).strftime("%d-%m-%Y")})
+        -else
+            %i (aired #{Date.parse(@episode.air_date).strftime("%d-%m-%Y")})
     %li.list-group-item.list-group-item-info #{@episode.overview}
     %li.list-group-item.list-group-item-info
         .row
