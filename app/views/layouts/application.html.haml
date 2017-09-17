@@ -14,3 +14,12 @@
       - elsif flash[:warning]
         .warning.message= flash[:warning]
       = yield
+    
+    %footer.footer.nav.navbar-inverse.navbar-fixed-bottom
+      .container-fluid
+        .text-muted.text-center 
+          Pouria Sterling 2017
+          \|
+          = link_to 'Contact', 'https://www.facebook.com/pouria.zebrahimi'
+          \|
+          = link_to 'Contribute on GitHub', 'https://github.com/PouriaSterling/ShowMark'

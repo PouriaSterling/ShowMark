@@ -8,6 +8,12 @@ body {
   padding: 5px;
 }
 
+.footer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid #090909;
+}
+
 .center {
   display: block;
   margin: auto;
@@ -37,7 +43,3 @@ body {
 .indented {
   margin-left: 20px;
 }
-
-// .hidden {
-//   display: none;
-// }
