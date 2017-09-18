@@ -77,25 +77,29 @@ html, body {
     transform: translate(-50%, -50%);
     
     h1 {
-        font-size: 45pt;
-        animation: 2s ease 0s normal forwards 1 fadeinTitle;
+      font-size: 45pt;
+      animation: 2s ease 0s normal forwards 1 fadeinTitle;
+    }
+    
+    h2 {
+      animation: 2s ease 0s normal forwards 1 fadeinBtn;
     }
 }
 
 
 #loginPageButton {
-    margin-top: 40px;
-    animation: 3.5s ease 0s normal forwards 1 fadeinBtn;
+  margin-top: 40px;
+  animation: 3.5s ease 0s normal forwards 1 fadeinBtn;
 }
 
 @keyframes fadeinTitle{
-    0% { opacity:0; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+  0% { opacity:0; }
+  50% { opacity:0; }
+  100% { opacity:1; }
 }
 
 @keyframes fadeinBtn{
-    0% { opacity:0; }
-    75% { opacity:0; }
-    100% { opacity:1; }
+  0% { opacity:0; }
+  75% { opacity:0; }
+  100% { opacity:1; }
 }
