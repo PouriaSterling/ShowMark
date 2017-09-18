@@ -9,6 +9,9 @@ class ShowsController < ApplicationController
     @poster_size = @config.images.poster_sizes[2]
     @xs_poster_size = @config.images.poster_sizes[1]
   end
+  
+  def about
+  end
 
   def show
   end

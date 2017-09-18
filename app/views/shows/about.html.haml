@@ -1,0 +1,44 @@
+.container-fluid.text-center
+    .row
+        .col-md-4.text-justify
+            %h2 WHAT IS SHOWMARK
+            %p
+                SHOWMARK was born through a love for TV shows. It is a simple yet powerful 
+                web app that, at its core, serves a dual purpose: to bookmark and archive your shows.
+        
+            %h4 
+                &emsp;
+                = fa_icon "bookmark"
+                Bookmarking
+            %p
+                How many times have you tried to watch a show only to realise you have no
+                idea where you're up to? I know I have and that's why SHOWMARK now exists!
+                Since streaming websites like Netflix already offer this functionality, 
+                SHOWMARK predominantly aims to cater for those poor forgotten shows not 
+                available on these sites.
+                    
+                
+            %h4 
+                &emsp; 
+                = fa_icon "archive"
+                Archiving
+            %p
+                If you're anything like me, then you probably enjoy looking at stats like
+                'How many total hours of shows have I watched', 'How many episodes of 
+                breaking bad are there' or 'How far through Suits am I'. By adding your 
+                shows to this site, you will get the answers to those questions and more in
+                beautifully presented ways.
+            %br  
+            %p
+                With new functionality added regularly and much more planned for the 
+                future, SHOWMARK is continously transforming into a more informative and 
+                useful website. Everything is open source, so if you would like to contribute 
+                or learn more, visit the
+                = link_to 'https://github.com/PouriaSterling/ShowMark' do
+                    GitHub
+                    = fa_icon "github"
+    .row
+        .col-md-4.text-justify
+            %h2 BEHIND THE SCENES
+            %p SHOWMARK is a Ruby on Rails application that uses the TMDb API but is not endorsed or certified by TMDb.
+            = link_to (image_tag "https://www.themoviedb.org/assets/static_cache/27b65cb40d26f78354a4ac5abf87b2be/images/v4/logos/powered-by-rectangle-green.svg", class: 'tmdb-logo'), "https://www.themoviedb.org/"

@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
+
+gem "font-awesome-rails"
 gem 'responders'
 # use bootstrap for a responsive app
 gem 'bootstrap-sass'
+# gem 'bootstrap', '~> 4.0.0.beta'
 # TMDB API wrapper
 gem 'themoviedb-api'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

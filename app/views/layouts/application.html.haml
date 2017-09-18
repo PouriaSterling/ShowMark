@@ -23,8 +23,8 @@
             .navbar-header
               = link_to "SHOWMARK", shows_path, class: "navbar-brand"
             %ul.nav.navbar-nav
-              %li.active= link_to 'HOME', shows_path
-              %li= link_to 'ABOUT', shows_path
+              %li= link_to 'HOME', shows_path
+              %li= link_to 'ABOUT', about_path
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown
                 // = link_to shows_path, class: "dropdown-toggle" do
@@ -46,4 +46,6 @@
           \|
           = link_to 'Contact', 'https://www.facebook.com/pouria.zebrahimi'
           \|
-          = link_to 'Contribute on GitHub', 'https://github.com/PouriaSterling/ShowMark'
+          = link_to 'https://github.com/PouriaSterling/ShowMark' do
+            Contribute on GitHub
+            = fa_icon "github"
