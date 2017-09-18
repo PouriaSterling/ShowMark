@@ -6,13 +6,19 @@ html, body {
   background-color: #242424;
   color: #198990;
   padding: 5px;
-  height: calc(100% - 8px);
+  // height: calc(100% - 8px);
+  height: 100%;
 }
 
 .wrapper {
   min-height: 100%;
   margin-bottom: -50px;
   padding-bottom: 50px;
+}
+
+.navbar-header{
+  font-weight: bold;
+  color: #198990 !important;
 }
 
 .footer {

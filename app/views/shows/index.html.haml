@@ -1,19 +1,5 @@
-%h1 
-  SHOWMARK
-  %br
-
 .homepage
-  .nav.navbar.navbar-inverse
-    .container-fluid
-      %ul.nav.navbar-nav
-        %li= link_to 'NEW SHOW', new_show_path
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          = link_to logout_path,:method => :post do
-            %span.glyphicon.glyphicon-option-vertical
-        // %li= link_to "#{@current_user.name}", root_path
-        // %li= link_to 'Log Out', logout_path, :method => :post
-  
+  = link_to 'ADD NEW SHOW', new_show_path, class: "btn btn-info"
   .container-fluid.text-center
     .row
       - @shows.each do |show|
