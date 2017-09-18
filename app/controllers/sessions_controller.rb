@@ -2,6 +2,13 @@ class SessionsController < ApplicationController
     # user shouldn't have to be logged in before logging in!
     skip_before_filter :set_current_user
     
+    def index
+        loggedIn = User.find_by(id: session[:user_id])
+        if !loggedIn.blank?
+            redirect_to shows_path and return
+        end
+    end
+    
     def create
         auth = request.env["omniauth.auth"]
         user = User.find_by(provider: auth["provider"], uid: auth["uid"]) || User.create_with_omniauth(auth)
