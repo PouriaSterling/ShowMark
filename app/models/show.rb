@@ -13,9 +13,4 @@ class Show < ActiveRecord::Base
             self.image = show.seasons[self.season - offset].poster_path
         end
     end
-    
-    def addShowID
-        show = Tmdb::Search.tv(self.name)
-        self.update(show_id: show.results[0].id)
-    end
 end

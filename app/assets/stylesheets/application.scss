@@ -1,11 +1,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
+html, body {
   font-family: Open Sans, arial, sans-serif;
   background-color: #242424;
   color: #198990;
   padding: 5px;
+  height: calc(100% - 8px);
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+  padding-bottom: 50px;
+}
+
+.footer {
+  border-top: 1px solid #090909;
+  height: 50px;
+}
+
+.footer-details {
+  line-height: 50px;
+  vertical-align: middle;
 }
 
 .center {
@@ -37,7 +54,3 @@ body {
 .indented {
   margin-left: 20px;
 }
-
-// .hidden {
-//   display: none;
-// }
