@@ -13,27 +13,29 @@
         .notice.message= flash[:notice]
       - elsif flash[:warning]
         .warning.message= flash[:warning]
+      // %h1 
+      //   SHOWMARK
+      //   %br
       
-      .nav.navbar.navbar-inverse
-        .container-fluid
-          .navbar-header
-            = link_to "SHOWMARK", shows_path, class: "navbar-brand"
-          %ul.nav.navbar-nav
-            %li.active= link_to 'HOME', shows_path
-            %li= link_to 'ABOUT', shows_path
-            // %li= link_to 'NEW SHOW', new_show_path
-          %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              // = link_to shows_path, class: "dropdown-toggle" do
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} 
-                #{@current_user.name}
-                %span.glyphicon.glyphicon-option-vertical
-              %ul.dropdown-menu
-                %li= link_to 'Log Out', logout_path, :method => :post
-            //   = link_to logout_path,:method => :post do
-            //     %span.glyphicon.glyphicon-option-vertical
-            // %li= link_to "#{@current_user.name}", root_path
-            // %li= link_to 'Log Out', logout_path, :method => :post
+      - if !@current_user.blank?
+        .nav.navbar.navbar-inverse
+          .container-fluid
+            .navbar-header
+              = link_to "SHOWMARK", shows_path, class: "navbar-brand"
+            %ul.nav.navbar-nav
+              %li.active= link_to 'HOME', shows_path
+              %li= link_to 'ABOUT', shows_path
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                // = link_to shows_path, class: "dropdown-toggle" do
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} 
+                  #{@current_user.name}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to logout_path, :method => :post do
+                      %span.glyphicon.glyphicon-log-out
+                      Log Out
       
       = yield
     
