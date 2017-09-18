@@ -50,5 +50,9 @@ RSpec.describe ShowsController, type: :routing do
     it "routes to #get_ep_info" do
       expect(:get => "/shows/get_ep_info/1/2/3").to route_to("shows#get_ep_info", id: "1", season: "2", ep: "3")
     end
+    
+    it "routes to #about" do
+      expect(:get => "/about").to route_to("shows#about")
+    end
   end
 end

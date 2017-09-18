@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 html, body {
   font-family: Open Sans, arial, sans-serif;
@@ -59,4 +60,8 @@ html, body {
 
 .indented {
   margin-left: 20px;
+}
+
+.tmdb-logo {
+  max-width: 300px;
 }
