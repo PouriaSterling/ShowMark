@@ -65,3 +65,37 @@ html, body {
 .tmdb-logo {
   max-width: 300px;
 }
+
+
+
+#loginPage{
+    
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    h1 {
+        font-size: 45pt;
+        animation: 2s ease 0s normal forwards 1 fadeinTitle;
+    }
+}
+
+
+#loginPageButton {
+    margin-top: 40px;
+    animation: 3.5s ease 0s normal forwards 1 fadeinBtn;
+}
+
+@keyframes fadeinTitle{
+    0% { opacity:0; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@keyframes fadeinBtn{
+    0% { opacity:0; }
+    75% { opacity:0; }
+    100% { opacity:1; }
+}
