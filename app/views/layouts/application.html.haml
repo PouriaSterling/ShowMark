@@ -8,16 +8,16 @@
     = csrf_meta_tags
 
   %body
-    #main
+    .wrapper
       - if flash[:notice]
         .notice.message= flash[:notice]
       - elsif flash[:warning]
         .warning.message= flash[:warning]
       = yield
     
-    %footer.footer.nav.navbar-inverse.navbar-fixed-bottom
+    %footer.footer.nav.navbar-inverse
       .container-fluid
-        .text-muted.text-center 
+        .text-muted.text-center.footer-details
           Pouria Sterling 2017
           \|
           = link_to 'Contact', 'https://www.facebook.com/pouria.zebrahimi'
