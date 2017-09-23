@@ -46,7 +46,7 @@ class ShowsController < ApplicationController
       end
     end
   end
-  
+
   def get_ep
     @id = params[:id]
     @season = params[:season]

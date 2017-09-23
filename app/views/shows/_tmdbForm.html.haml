@@ -1,4 +1,4 @@
 = form_tag('search_tmdb', remote: true) do
-  %label{for: 'search_terms'} Show Name
+  %label#search{for: 'search_terms'} Show Name
   = text_field_tag 'search_terms'
   = submit_tag 'Search'
