@@ -37,11 +37,11 @@ class ShowsController < ApplicationController
     @seasons = @show.number_of_seasons
     @offset = 0
     # skip season 0 (special episodes) if it exists
-    if @show.seasons[0].season_number == 0
+    if !@show.seasons[0].blank? and @show.seasons[0].season_number == 0
       @offset = 1
     end
     @show.seasons.reverse_each do |season|
-      if !Date.parse(season.air_date).past?
+      if season.season_number != 0 and !Date.parse(season.air_date).past?
         @seasons -= 1
       end
     end
