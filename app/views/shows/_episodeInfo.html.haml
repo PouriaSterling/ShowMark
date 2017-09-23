@@ -15,11 +15,12 @@
                         = image_tag @base_url + @still_size + still.file_path, class: "img-fluid center"
 
 %br
-Confirm your selections
-%ul.list-group
-    %li.list-group-item.list-group-item-info
-        %strong #{@name}
-    %li.list-group-item.list-group-item-info Season: #{@season}
-    %li.list-group-item.list-group-item-info Episode: #{@ep}
-
-= button_to "Save", '/shows', params: {name: @name, season: @season, episode: @ep, show_id: @id}, class: "btn btn-success"
+%h4{style: "margin-left: -20px;"}
+    #{@name} -
+    #{"S%02dE%02d" % [@season, @ep]}
+    
+-if Date.parse(@episode.air_date).past?
+    = button_to "Save", '/shows', params: {name: @name, season: @season, episode: @ep, show_id: @id}, class: "btn btn-success"
+-else
+    %i.warning Can't bookmark an unreleased episode
+    = button_to "Save", '/shows', params: {name: @name, season: @season, episode: @ep, show_id: @id}, class: "btn btn-success disabled"

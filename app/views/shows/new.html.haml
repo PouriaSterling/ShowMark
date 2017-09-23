@@ -1,14 +1,24 @@
 %h1 New show
 %p.warning#errors{style:"display: none;"}
 
-= render 'tmdbForm'
-.indented
-    #selection-shows{style:"display: none;"}
-    %h5#selection-seasons-heading{style:"display: none;"}
-    #selection-seasons{style:"display: none;"}
-    %h5#selection-episodes-heading{style:"display: none;"}
-    #selection-episodes{style:"display: none;"}
-    %h5#episode-info-heading{style:"display: none;"}
-    #episode-info{style:"display: none;"}
+.indented#selection-categories
+    would you like to
+    %button{class: "btn btn-info", "onclick": "category('bookmark')"} Bookmark a Show
+    or
+    %button{class: "btn btn-info", "onclick": "category('watchlist')"} Add to Watchlist
 
+%br
+#bookmark{style:"display: none;"}
+    .indented
+        = render 'tmdbForm'
+        #selection-shows{style:"display: none;"}
+        %h4#selection-seasons-heading{style:"display: none;"}
+        .indented#selection-seasons{style:"display: none;"}
+        %h4#selection-episodes-heading{style:"display: none;"}
+        .indented#selection-episodes{style:"display: none;"}
+        %h4#episode-info-heading{style:"display: none;"}
+        .indented#episode-info{style:"display: none;"}
+        
+#watchlist{style:"display: none;"}
+    
 = link_to 'Cancel', shows_path, class: "btn btn-info"

@@ -21,6 +21,10 @@ RSpec.describe Show, type: :model do
         it "has a show ID attribute" do
             expect(FactoryGirl.build(:show)).to respond_to(:show_id)
         end
+        
+        it "has a category attribute" do
+            expect(FactoryGirl.build(:show)).to respond_to(:category)
+        end
     end
     
     describe "associations" do
