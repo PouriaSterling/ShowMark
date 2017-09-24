@@ -3,7 +3,11 @@ class ShowsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @shows = Show.where(user_id: @current_user.id)
+    shows = Show.where(user_id: @current_user.id)
+    @bookmarks = shows.where(category: "Bookmark")
+    @watchlist = shows.where(category: "Watchlist").order(priority: :desc)
+    @archive = shows.where(category: "Archive")
+    
     @config = Tmdb::Configuration.get
     @base_url = @config.images.secure_base_url
     @poster_size = @config.images.poster_sizes[2]
