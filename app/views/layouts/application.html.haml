@@ -22,15 +22,15 @@
                 %span.icon-bar
                 %span.icon-bar
                 %span.icon-bar
-              = link_to"SHOWMARK", shows_path, class: "navbar-brand", onclick: "navigate(this)"
+              = link_to"SHOWMARK", shows_path, class: "navbar-brand"
             .collapse.navbar-collapse#myNavbar
               %ul.nav.navbar-nav
                 - if params[:action] == "about"
-                  %li= link_to 'HOME', shows_path, onclick: "navigate(this)"
-                  %li.active= link_to 'ABOUT', about_path, onclick: "navigate(this)"
+                  %li= link_to 'HOME', shows_path
+                  %li.active= link_to 'ABOUT', about_path
                 - else
-                  %li.active= link_to 'HOME', shows_path, onclick: "navigate(this)"
-                  %li= link_to 'ABOUT', about_path, onclick: "navigate(this)"
+                  %li.active= link_to 'HOME', shows_path
+                  %li= link_to 'ABOUT', about_path
               %ul.nav.navbar-nav.navbar-right
                 %li.dropdown
                   // = link_to shows_path, class: "dropdown-toggle" do
