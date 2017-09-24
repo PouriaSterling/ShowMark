@@ -2,7 +2,7 @@
 .row
     - @search.results.each_with_index do |show, i|
         - break if i == 3
-        = link_to "search_id/#{show.id}", controller: "shows", class: "btn", remote: true do
+        = link_to "nowhere", controller: "shows", class: "btn select-show", onclick: "showSelected(this)", 'data-id': "#{show.id}", 'data-name': "#{show.name}" , remote: true do
             .col-lg-2.col-md-3.col-sm-4.col-xs-6.choice-tiles{id: "show-#{i}-#{show.id}"}
                 .center
                     %h5 

@@ -25,6 +25,10 @@ RSpec.describe Show, type: :model do
         it "has a category attribute" do
             expect(FactoryGirl.build(:show)).to respond_to(:category)
         end
+        
+        it "has a priority attribute" do
+            expect(FactoryGirl.build(:show)).to respond_to(:priority)
+        end
     end
     
     describe "associations" do
@@ -36,5 +40,4 @@ RSpec.describe Show, type: :model do
             expect(test_show.user).to eq(test_user)
         end
     end
-  
 end

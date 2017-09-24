@@ -1,23 +1,37 @@
 %p.warning#errors{style:"display: none;"}
 
-%h4.indented#selection-categories
-    Would you like to
-    %button{class: "btn btn-info", "onclick": "category('bookmark')"} Bookmark a Show
-    or
-    %button{class: "btn btn-info", "onclick": "category('watchlist')"} Add to Watchlist
-
-%br
-#bookmark{style:"display: none;"}
-    .indented
-        = render 'tmdbForm'
-        #selection-shows{style:"display: none;"}
-        %h4#selection-seasons-heading{style:"display: none;"}
-        .indented#selection-seasons{style:"display: none;"}
-        %h4#selection-episodes-heading{style:"display: none;"}
-        .indented#selection-episodes{style:"display: none;"}
-        %h4#episode-info-heading{style:"display: none;"}
-        .indented#episode-info{style:"display: none;"}
-        
-#watchlist{style:"display: none;"}
+.indented
+    %h4#selection-categories
+        Would you like to
+        %button{class: "btn btn-info", "onclick": "category('bookmark')"} Bookmark a Show
+        or
+        %button{class: "btn btn-info", "onclick": "category('watchlist')"} Add to Watchlist
     
+    #tmdb-form-div{style:"display: none;"}
+        = render 'tmdbForm'
+        
+    
+    %br
+    #bookmark{style:"display: none;"}
+        .indented
+            #selection-shows{style:"display: none;"}
+            %h4#selection-seasons-heading{style:"display: none;"}
+            .indented#selection-seasons{style:"display: none;"}
+            %h4#selection-episodes-heading{style:"display: none;"}
+            .indented#selection-episodes{style:"display: none;"}
+            %h4#episode-info-heading{style:"display: none;"}
+            .indented#episode-info{style:"display: none;"}
+            
+    #watchlist{style:"display: none;"}
+        .indented
+            #selection-shows{style:"display: none;"}
+            #priority{style:"display: none;"}
+                %h4 How keen are you to watch this show?
+                #slidecontainer
+                    %input#myRange.slider{max: "5", min: "1", type: "range", value: "1", oninput: "myFunction(this.value)"}
+                    // %p{id: "keen-scale"}
+                    %h5
+                        %strong#keen-scale Not fussed
+                = button_to "Save", '/shows', params: {name: 'nothingYet', show_id: 0, category: 'Watchlist', priority: 1}, class: "btn btn-success", id: 'watchlist-save'
+        
 = link_to 'Cancel', shows_path, class: "btn btn-info"
