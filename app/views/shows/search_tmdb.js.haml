@@ -1,10 +1,11 @@
-// - byebug
+// Hide parts of form
 $('#selection-seasons-heading').hide();
 $('#selection-seasons').hide();
 $('#selection-episodes-heading').hide();
 $('#selection-episodes').hide();
 $('#episode-info-heading').hide();
 $('#episode-info').hide();
+$('#priority').hide()
 - if @search == 0
     $('#errors').text('FILL THE FIELD')
     $('#errors').show();
@@ -18,5 +19,7 @@ $('#episode-info').hide();
     - else
         // show exists
         $('#errors').hide();
-        $('#selection-shows').html('#{escape_javascript(render :partial => "selectShow")}');
-        $('#selection-shows').slideDown(350);
+        $('#bookmark #selection-shows').html('#{escape_javascript(render :partial => "selectShow")}');
+        $('#watchlist #selection-shows').html('#{escape_javascript(render :partial => "selectShow")}');
+        $('#bookmark #selection-shows').slideDown(350);
+        $('#watchlist #selection-shows').slideDown(350);

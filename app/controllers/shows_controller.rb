@@ -132,11 +132,13 @@ class ShowsController < ApplicationController
             name: params[:name],
             season: params[:season],
             episode: params[:episode],
-            show_id: params[:show_id]
+            show_id: params[:show_id],
+            category: params[:category],
+            priority: params[:priority]
           }
         }
         params = ActionController::Parameters.new(raw_parameters)
       end
-      params.require(:show).permit(:name, :season, :episode, :show_id)
+      params.require(:show).permit(:name, :season, :episode, :show_id, :category, :priority)
     end
 end

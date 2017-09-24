@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923034914) do
+ActiveRecord::Schema.define(version: 20170924080530) do
 
   create_table "shows", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170923034914) do
     t.integer  "user_id"
     t.integer  "show_id"
     t.string   "category"
+    t.integer  "priority"
   end
 
   add_index "shows", ["user_id"], name: "index_shows_on_user_id"

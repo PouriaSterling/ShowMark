@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem "font-awesome-rails"
 gem 'responders'
 # use bootstrap for a responsive app

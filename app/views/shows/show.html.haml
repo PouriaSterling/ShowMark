@@ -6,6 +6,15 @@
 %p
   %b Episode:
   = @show.episode
+
+%p
+  %b Category:
+  = @show.category
+  
+%p
+  %b Priority:
+  = @show.priority
+  
 // = link_to 'Edit', edit_show_path(@show)
 // \|
 = link_to 'Delete', @show, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"
