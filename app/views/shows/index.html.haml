@@ -1,8 +1,11 @@
 .homepage
-  = link_to 'ADD NEW SHOW', new_show_path, class: "btn btn-info"
-  .container-fluid.text-center
-    .row
-      - @shows.each do |show|
-        .btn.text-center
-          = link_to (image_tag @base_url + @poster_size + show.image, class: "visible-md visible-sm visible-lg", style: "width:100%;"), show, id: "#{show.name} button"
-          = link_to (image_tag @base_url + @xs_poster_size + show.image, class: "visible-xs", style: "width:100%;"), show, id: "#{show.name} button -xs"
+    = link_to 'ADD NEW SHOW', new_show_path, class: "btn btn-info"
+    
+    %h3 BOOKMARKS
+    = render partial: "showTiles", locals: {shows: @bookmarks}
+    
+    %h3 WATCHLIST
+    = render partial: "showTiles", locals: {shows: @watchlist}
+    
+    %h3 ARCHIVE
+    = render partial: "showTiles", locals: {shows: @archive}

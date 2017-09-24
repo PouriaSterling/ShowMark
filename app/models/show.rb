@@ -13,9 +13,8 @@ class Show < ActiveRecord::Base
             else
                 self.image = show.seasons[self.season - offset].poster_path
             end
-        elsif category == 'Watchlist'
+        elsif category == 'Watchlist' or category == 'Archive'
             self.image = show.poster_path
         end
-        self.image = show.poster_path
     end
 end
