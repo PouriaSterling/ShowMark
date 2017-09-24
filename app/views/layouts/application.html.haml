@@ -13,29 +13,35 @@
         .notice.message= flash[:notice]
       - elsif flash[:warning]
         .warning.message= flash[:warning]
-      // %h1 
-      //   SHOWMARK
-      //   %br
-      
+
       - if !@current_user.blank?
         .nav.navbar.navbar-inverse
           .container-fluid
             .navbar-header
-              = link_to "SHOWMARK", shows_path, class: "navbar-brand"
-            %ul.nav.navbar-nav
-              %li= link_to 'HOME', shows_path
-              %li= link_to 'ABOUT', about_path
-            %ul.nav.navbar-nav.navbar-right
-              %li.dropdown
-                // = link_to shows_path, class: "dropdown-toggle" do
-                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} 
-                  #{@current_user.name}
-                  %span.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to logout_path, :method => :post do
-                      %span.glyphicon.glyphicon-log-out
-                      Log Out
+              %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", type: "button"}
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              = link_to"SHOWMARK", shows_path, class: "navbar-brand", onclick: "navigate(this)"
+            .collapse.navbar-collapse#myNavbar
+              %ul.nav.navbar-nav
+                - if params[:action] == "about"
+                  %li= link_to 'HOME', shows_path, onclick: "navigate(this)"
+                  %li.active= link_to 'ABOUT', about_path, onclick: "navigate(this)"
+                - else
+                  %li.active= link_to 'HOME', shows_path, onclick: "navigate(this)"
+                  %li= link_to 'ABOUT', about_path, onclick: "navigate(this)"
+              %ul.nav.navbar-nav.navbar-right
+                %li.dropdown
+                  // = link_to shows_path, class: "dropdown-toggle" do
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} 
+                    #{@current_user.name}
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li
+                      = link_to logout_path, :method => :post do
+                        %span.glyphicon.glyphicon-log-out
+                        Log Out
       
       = yield
     
